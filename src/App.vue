@@ -2,7 +2,10 @@
 	<div>
 		<div v-if="!mobile" class="app flex flex-column">
 			<Navigation />
-			<div class="app-content flex flex-column"><router-view /></div>
+			<div class="app-content flex flex-column">
+				<InvoiceModal />
+				<router-view />
+			</div>
 		</div>
 		<div v-else class="mobile-message flex flex-column">
 			<h2>Sorry, this app is not supported on Mobile Devices</h2>
@@ -13,6 +16,7 @@
 
 <script>
 import Navigation from "./components/Navigation";
+import InvoiceModal from "./components/InvoiceModal";
 export default {
 	data() {
 		return {
@@ -21,6 +25,7 @@ export default {
 	},
 	components: {
 		Navigation,
+		InvoiceModal,
 	},
 	created() {
 		this.checkScreen();

@@ -91,13 +91,13 @@
 					>
 						<p>{{ item.itemName }}</p>
 						<p>{{ item.qty }}</p>
-						<p>{{ item.price }}</p>
-						<p>{{ item.total }}</p>
+						<p>${{ item.price }}</p>
+						<p>${{ item.total }}</p>
 					</div>
 				</div>
 				<div class="total flex">
 					<p>Amount Due</p>
-					<p>{{ currentInvoice.invoiceTotal }}</p>
+					<p>${{ currentInvoice.invoiceTotal }}</p>
 				</div>
 			</div>
 		</div>
@@ -185,13 +185,37 @@ export default {
 				color: #dfe3fa;
 				margin-right: 16px;
 			}
+
+			.status-button {
+				@media screen and (max-width: 720px) {
+					margin-right: 0;
+				}
+			}
+
+			@media screen and (max-width: 720px) {
+				margin-bottom: 16px;
+				width: 100%;
+				justify-content: space-between;
+			}
 		}
 		.right {
 			flex: 1;
 			justify-content: flex-end;
 			button {
 				color: #fff;
+				@media screen and (max-width: 720px) {
+					margin-right: 0;
+				}
 			}
+			@media screen and (max-width: 720px) {
+				width: 100%;
+				justify-content: space-between;
+			}
+		}
+
+		@media screen and (max-width: 720px) {
+			flex-direction: column;
+			padding: 16px;
 		}
 	}
 	.invoice-details {
@@ -249,6 +273,9 @@ export default {
 			.bill {
 				p:nth-child(2) {
 					font-size: 16px;
+					@media screen and (max-width: 720px) {
+						margin-bottom: 10px;
+					}
 				}
 				p:nth-child(3) {
 					margin-top: auto;
@@ -256,9 +283,23 @@ export default {
 				p {
 					font-size: 12px;
 				}
+				p:first-child {
+				}
+
+				@media screen and (max-width: 720px) {
+					margin-top: 20px;
+				}
 			}
 			.send-to {
 				flex: 2;
+
+				@media screen and (max-width: 720px) {
+					margin-top: 20px;
+				}
+			}
+
+			@media screen and (max-width: 720px) {
+				flex-direction: column;
 			}
 		}
 		.bottom {
@@ -266,7 +307,7 @@ export default {
 			.billing-items {
 				padding: 32px;
 				border-radius: 20px 20px 0 0;
-				background-color: #252945;
+				background-color: #252b45;
 				.heading {
 					color: #dfe3fa;
 					font-size: 12px;
@@ -296,6 +337,10 @@ export default {
 						text-align: right;
 					}
 				}
+
+				@media screen and (max-width: 720px) {
+					padding: 16px;
+				}
 			}
 			.total {
 				color: #fff;
@@ -311,7 +356,16 @@ export default {
 					font-size: 28px;
 					text-align: right;
 				}
+
+				@media screen and (max-width: 720px) {
+					padding: 16px;
+				}
 			}
+		}
+
+		@media screen and (max-width: 720px) {
+			flex-direction: column;
+			padding: 16px;
 		}
 	}
 }

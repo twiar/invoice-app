@@ -100,6 +100,7 @@
 							<img @click="deleteInvoiceItem(item.id)" src="@/assets/icon-delete.svg" alt="" />
 						</tr>
 					</table>
+
 					<div @click="addNewInvoiceItem" class="flex button">
 						<img src="@/assets/icon-plus.svg" alt="" />
 						Add New Item
@@ -361,12 +362,11 @@ export default {
 	background-color: transparent;
 	width: 100%;
 	height: 100vh;
-	overflow: scroll;
+	overflow-y: scroll;
+	scrollbar-width: none;
+	z-index: 1;
 	&::-webkit-scrollbar {
 		display: none;
-	}
-	@media (min-width: 900px) {
-		left: 90px;
 	}
 
 	.invoice-content {
@@ -390,7 +390,7 @@ export default {
 		}
 
 		h4 {
-			color: #7c5dfa;
+			color: #5d9cfa;
 			font-size: 12px;
 			margin-bottom: 24px;
 		}
@@ -489,7 +489,22 @@ export default {
 
 			.right {
 				justify-content: flex-end;
+
+				button {
+					@media screen and (max-width: 720px) {
+						margin-right: 0;
+						margin-left: 10px;
+					}
+				}
+
+				@media screen and (max-width: 720px) {
+					flex: 2;
+				}
 			}
+		}
+
+		@media screen and (max-width: 720px) {
+			padding: 40px 16px;
 		}
 	}
 
@@ -514,6 +529,10 @@ export default {
 		&:focus {
 			outline: none;
 		}
+	}
+
+	@media (min-width: 900px) {
+		left: 90px;
 	}
 }
 </style>

@@ -100,6 +100,10 @@ export default {
 		.left,
 		.right {
 			flex: 1;
+
+			@media screen and (max-width: 720px) {
+				margin-bottom: 20px;
+			}
 		}
 
 		.right {
@@ -149,7 +153,7 @@ export default {
 
 			.button {
 				padding: 8px 10px;
-				background-color: #7c5dfa;
+				background-color: #5d9cfa;
 				border-radius: 40px;
 
 				.inner-button {
@@ -165,7 +169,20 @@ export default {
 						height: 10px;
 					}
 				}
+
+				@media screen and (max-width: 720px) {
+					margin-right: 0;
+				}
 			}
+
+			@media screen and (max-width: 720px) {
+				justify-content: space-between;
+			}
+		}
+
+		@media screen and (max-width: 720px) {
+			flex-direction: column;
+			margin-bottom: 20px;
 		}
 	}
 

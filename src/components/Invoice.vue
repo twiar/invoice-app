@@ -22,9 +22,9 @@
 				<span v-if="invoice.invoiceDraft">Draft</span>
 				<span v-if="invoice.invoicePending">Pending</span>
 			</div>
-		</div>
-		<div class="icon">
-			<img src="@/assets/icon-arrow-right.svg" alt="" />
+			<div class="icon">
+				<img src="@/assets/icon-arrow-right.svg" alt="" />
+			</div>
 		</div>
 	</router-link>
 </template>
@@ -64,6 +64,18 @@ export default {
 		.tracking-number {
 			text-transform: uppercase;
 		}
+
+		.person {
+			@media screen and (max-width: 720px) {
+				text-align: right;
+			}
+		}
+
+		@media screen and (max-width: 720px) {
+			width: 100%;
+			gap: 0;
+			flex-basis: 0;
+		}
 	}
 
 	.right {
@@ -76,6 +88,17 @@ export default {
 			font-size: 16px;
 			font-weight: 600;
 		}
+
+		@media screen and (max-width: 720px) {
+			width: 100%;
+			gap: 0;
+			flex-basis: 0;
+		}
+	}
+
+	@media screen and (max-width: 720px) {
+		flex-direction: column;
+		padding: 16px;
 	}
 }
 </style>

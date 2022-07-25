@@ -1,7 +1,6 @@
 <template>
 	<div v-if="invoicesLoaded">
-		<div v-if="!mobile" class="app flex flex-column">
-			<Navigation />
+		<div class="app flex flex-column">
 			<div class="app-content flex flex-column">
 				<Modal v-if="modalActive" />
 				<transition name="invoice">
@@ -10,16 +9,11 @@
 				<router-view />
 			</div>
 		</div>
-		<div v-else class="mobile-message flex flex-column">
-			<h2>Sorry, this app is not supported on Mobile Devices</h2>
-			<p>To use this app, please use a computer or tablet</p>
-		</div>
 	</div>
 </template>
 
 <script>
 import { mapState, mapActions } from "vuex";
-import Navigation from "./components/Navigation";
 import InvoiceModal from "./components/InvoiceModal";
 import Modal from "./components/Modal";
 export default {
@@ -29,25 +23,14 @@ export default {
 		};
 	},
 	components: {
-		Navigation,
 		InvoiceModal,
 		Modal,
 	},
 	created() {
 		this.GET_INVOICES();
-		this.checkScreen();
-		window.addEventListener("resize", this.checkScreen);
 	},
 	methods: {
 		...mapActions(["GET_INVOICES"]),
-		checkScreen() {
-			const windowWidth = window.innerWidth;
-			if (windowWidth <= 750) {
-				this.mobile = true;
-				return;
-			}
-			this.mobile = false;
-		},
 	},
 	computed: {
 		...mapState(["invoiceModal", "modalActive", "invoicesLoaded"]),
@@ -56,25 +39,35 @@ export default {
 </script>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600&display=swap");
 
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: "Poppins", sans-serif;
+	font-family: "Archivo", sans-serif;
+
+	@media screen and (max-width: 720px) {
+		cursor: none;
+	}
 }
 
 .app {
 	background-color: #141625;
 	min-height: 100vh;
-	@media (min-width: 900px) {
-		flex-direction: row !important;
-	}
+
 	.app-content {
 		padding: 0 20px;
 		flex: 1;
 		position: relative;
+
+		@media screen and (max-width: 720px) {
+			padding: 0 5px;
+		}
+	}
+
+	@media (min-width: 900px) {
+		flex-direction: row !important;
 	}
 }
 
@@ -123,7 +116,7 @@ button,
 }
 
 .purple {
-	background-color: #7c5dfa;
+	background-color: #5d9cfa;
 }
 
 .green {
